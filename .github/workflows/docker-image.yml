@@ -32,12 +32,12 @@ jobs:
         with:
           push: true
           tags: k33ngtomide/heavengate
-      # - name: SSH into EC2 instance and pull the latest image
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ secrets.EC2_HOST }}
-      #     username: ${{ secrets.EC2_USERNAME }}
-      #     key: ${{ secrets.EC2_SSH_KEY }}
-      #     script: |
-      #       docker pull k33ngtomide/heavengate:latest
+      - name: SSH into EC2 instance and pull the latest image
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            docker pull k33ngtomide/heavengate:latest
             
