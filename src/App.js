@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -12,6 +12,8 @@ function App() {
 
           Click on the door to open
         </p>
+
+        <p>Ahbi you no want enter heaven</p>
         <a
           className="App-link"
           href="https://google.com"
