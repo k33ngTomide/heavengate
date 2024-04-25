@@ -25,6 +25,7 @@ function App() {
         <Button
           variant='filled'
           onClick={getUsers}
+          
         >
           Open Book of Life
         </Button>
