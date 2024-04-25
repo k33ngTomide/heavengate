@@ -7,7 +7,7 @@ function App() {
   const [users, setUsers] = useState([])
 
   const getUsers = () => {
-    fetch('https//localhost:8081/getUsers')
+    fetch('http://51.20.53.55/:8081/api/getUsers')
     .then(res => res.json())
     .then(res => setUsers(res))
     .catch(error => console.log(error))
