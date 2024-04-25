@@ -42,3 +42,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             docker pull k33ngtomide/heavengate:latest
+            docker stop heavengate
+            docker rm heavengate
+            docker images | grep "<none>" | awk '{print $3}' | xargs -r docker rmi
+            docker run -d -p 3000:3000 --name heavengate k33ngtomide/heavengate:latest
