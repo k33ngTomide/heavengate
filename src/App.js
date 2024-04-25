@@ -7,7 +7,7 @@ function App() {
   const [users, setUsers] = useState([])
 
   const getUsers = () => {
-    fetch('http://51.20.53.55/:8081/api/getUsers')
+    fetch('http://51.20.53.55:8080/api/getUsers')
     .then(res => res.json())
     .then(res => setUsers(res))
     .catch(error => console.log(error))
@@ -17,13 +17,13 @@ function App() {
     <div className="App">
 
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Typography variant='h1'>
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <Typography variant='h3' gutterBottom>
           Welcome to Heaven's gate
         </Typography>
 
         <Button
-          variant='filled'
+          variant='contained'
           onClick={getUsers}
           
         >
