@@ -13,7 +13,7 @@ function App() {
       .then(res => res.json())
       .then(res => {
         console.log(res);
-        setUsers(res.data);
+        setUsers(res.users);
         setLoading(false);
       })
       .catch(error => {
@@ -23,7 +23,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App" >
       <header className="App-header">
         <Typography variant='h3' gutterBottom>
           Welcome to Heaven's gate
@@ -32,7 +32,6 @@ function App() {
         <Button
           variant='contained'
           onClick={getUsers}
-          gutterBottom
         >
           Open Book of Life
         </Button>
@@ -40,7 +39,7 @@ function App() {
         {loading ? (
           <CircularProgress />
         ) : (
-          <Grid container spacing={2}>
+          <Grid container spacing={2} style={{display:'flex', alignItems: 'center', alignSelf:'center', paddingLeft: 70}}>
             {users.map(user => (
               <BookCard key={user.id} user={user} />
             ))}
@@ -54,39 +53,40 @@ function App() {
 
 const BookCard = (user) => {
 
+  const {image, firstName, lastName, email, username, age, gender, bloodGroup, height, department} = user.user
   return(
     <Card variant="outlined">
       <CardContent>
         <Grid container spacing={2} alignItems="center">
           <Grid item>
-            <Avatar alt={user.name} src={user.image} />
+            <Avatar alt={"userImage"} src={image} />
           </Grid>
           <Grid item>
             <Typography variant="h5" component="div">
-              {user.firstName} {user.lastName}
+              {firstName} {lastName}
             </Typography>
             <Typography variant="body2">
-              Email: {user.email}
+              Email: {email}
             </Typography>
             <Typography variant="body2">
-              Username: {user.username}
+              Username: {username}
             </Typography>
             <Typography variant="body2">
-              Age: {user.age}
+              Age: {age}
             </Typography>
             <Typography variant="body2">
-              Gender: {user.gender}
+              Gender: {gender}
             </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="body1" color="textSecondary">
-              Blood Group: {user.bloodGroup}
+            <Typography variant="body1" color="Secondary">
+              Blood Group: {bloodGroup}
             </Typography>
-            <Typography variant="body1" color="textSecondary">
-              Height: {user.height} cm
+            <Typography variant="body1" color="Secondary">
+              Height: {height} cm
             </Typography>
-            <Typography variant="body1" color="textSecondary">
-              Department: {user.department}
+            <Typography variant="body1" color="Secondary">
+              Department: {department}
             </Typography>
           </Grid>
         </Grid>
