@@ -1,23 +1,30 @@
 import logo from './assets/gate.jpg';
 import './App.css';
-import { Avatar, Button, Card, CardContent, Grid, Typography } from '@mui/material';
+import { Avatar, Button, Card, CardContent, Grid, Typography, CircularProgress } from '@mui/material';
 import { useState } from 'react';
 
 function App() {
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getUsers = () => {
+    setLoading(true);
     fetch('http://13.51.57.0:8080/api/getUsers')
-    .then(res => res.json())
-    .then(res => setUsers(res))
-    .catch(error => console.log(error))
-  }
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        setUsers(res.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.log(error);
+        setLoading(false);
+      });
+  };
 
   return (
     <div className="App">
-
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <Typography variant='h3' gutterBottom>
           Welcome to Heaven's gate
         </Typography>
@@ -25,20 +32,25 @@ function App() {
         <Button
           variant='contained'
           onClick={getUsers}
-          
+          gutterBottom
         >
           Open Book of Life
         </Button>
 
-        <Grid container spacing={2}>
-          {users.map(user => (
-            <BookCard key={user.id} user={user} />
-          ))}
-        </Grid>
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <Grid container spacing={2}>
+            {users.map(user => (
+              <BookCard key={user.id} user={user} />
+            ))}
+          </Grid>
+        )}
       </header>
     </div>
   );
 }
+
 
 const BookCard = (user) => {
 
