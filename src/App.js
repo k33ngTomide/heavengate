@@ -9,7 +9,11 @@ function App() {
   const getUsers = () => {
     fetch('http://13.51.57.0:8080/api/getUsers')
     .then(res => res.json())
-    .then(res => setUsers(res))
+    .then(res => {
+      console.log(res)
+      setUsers(res.data)
+      
+    })
     .catch(error => console.log(error))
   }
 
