@@ -39,7 +39,7 @@ function App() {
         {loading ? (
           <CircularProgress />
         ) : (
-          <Grid container spacing={2} style={{display:'flex', alignItems: 'center', alignSelf:'center', paddingLeft: 70}}>
+          <Grid container spacing={2} style={{display:'flex', alignItems: 'center', alignSelf:'center', paddingLeft: 30}}>
             {users.map(user => (
               <BookCard key={user.id} user={user} />
             ))}
@@ -55,7 +55,7 @@ const BookCard = (user) => {
 
   const {image, firstName, lastName, email, username, age, gender, bloodGroup, height, department} = user.user
   return(
-    <Card variant="outlined">
+    <Card variant="outlined" style={{margin: 20}}>
       <CardContent>
         <Grid container spacing={2} alignItems="center">
           <Grid item>
