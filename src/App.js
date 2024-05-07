@@ -9,7 +9,7 @@ function App() {
 
   const getUsers = () => {
     setLoading(true);
-    fetch('http://13.51.143.76:8181/api/getUsers')
+    fetch('http://localhost:8181/api/getUsers')
       .then(res => res.json())
       .then(res => {
         console.log(res);
